@@ -344,7 +344,10 @@ async function fetchNews() {
 
   const feedPromises = RSS_FEEDS.map(async (feed) => {
     try {
-      const res = await fetch(NEWS_API_URL + encodeURIComponent(feed.url));
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 5000);
+      const res = await fetch(NEWS_API_URL + encodeURIComponent(feed.url), { signal: controller.signal });
+      clearTimeout(timeout);
       if (!res.ok) return [];
       const data = await res.json();
       if (data.status !== 'ok' || !data.items) return [];
@@ -724,17 +727,12 @@ document.addEventListener('wheel', e => {
 
 // Start
 async function startApp() {
+  document.getElementById('scoreBar').style.display = 'flex';
+  setTimeout(() => document.getElementById('swipeHint').style.display = 'none', 5000);
   document.querySelector('.splash').classList.add('hidden');
   await buildFeed();
   goToCard(0);
 }
-// Show score bar after start
-const origStartApp = startApp;
-startApp = async function() {
-  document.getElementById('scoreBar').style.display = 'flex';
-  setTimeout(() => document.getElementById('swipeHint').style.display = 'none', 5000);
-  await origStartApp();
-};
 </script>
 </body>
 </html>
