@@ -48,9 +48,11 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
 .card-counter { position: absolute; top: calc(1.5rem + var(--safe-top)); right: 1.5rem; font-size: 0.75rem; color: var(--text-muted); z-index: 10; }
 
 /* === NEWS CARD === */
-.news-card { background: linear-gradient(135deg, var(--card-news) 0%, #16213e 100%); }
+.news-card { background: linear-gradient(135deg, var(--card-news) 0%, #16213e 100%); padding-top: calc(1.5rem + var(--safe-top) + 40px); }
 .news-inner { max-width: 500px; width: 100%; }
 .news-source { font-size: 0.75rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; }
+.news-image { width: 100%; max-width: 500px; border-radius: 16px; overflow: hidden; margin-bottom: 1.25rem; position: relative; }
+.news-image img { width: 100%; height: 200px; object-fit: cover; display: block; }
 .news-headline { font-family: 'DM Serif Display', serif; font-size: 1.8rem; line-height: 1.25; margin-bottom: 1rem; }
 .news-snippet { color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; }
 .news-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.9rem; padding: 0.6rem 1.2rem; border: 1px solid rgba(108,92,231,0.3); border-radius: 12px; transition: all 0.2s; }
@@ -229,43 +231,67 @@ function generateMemoryPattern(level) {
   return pattern;
 }
 // === NEWS FETCHING ===
+const NEWS_API_URL = 'https://api.rss2json.com/v1/api.json?rss_url=';
 const RSS_FEEDS = [
   { name: 'BBC News', url: 'https://feeds.bbci.co.uk/news/rss.xml' },
-  { name: 'Reuters', url: 'https://feeds.reuters.com/reuters/topNews' },
   { name: 'NPR', url: 'https://feeds.npr.org/1001/rss.xml' },
-  { name: 'AP News', url: 'https://rsshub.app/apnews/topics/apf-topnews' }
+  { name: 'CNN', url: 'http://rss.cnn.com/rss/edition.rss' },
+  { name: 'The Guardian', url: 'https://www.theguardian.com/world/rss' }
 ];
 
 const FALLBACK_NEWS = [
-  {source:"Science",title:"James Webb Telescope Captures New Image of Distant Galaxy Formation",snippet:"The telescope's latest deep-field image reveals thousands of previously unseen galaxies forming in the early universe, reshaping our understanding of cosmic evolution.",link:"https://www.nasa.gov/webb",time:"Today"},
-  {source:"Technology",title:"Global Push for AI Safety Standards Gains Momentum",snippet:"Over 40 countries have now signed agreements to establish shared frameworks for artificial intelligence development and deployment.",link:"https://www.reuters.com/technology",time:"Today"},
-  {source:"Health",title:"New Study Links Mediterranean Diet to Improved Cognitive Function",snippet:"Researchers found that adults following a Mediterranean diet showed significantly better memory and processing speed over a 5-year period.",link:"https://www.bbc.com/news/health",time:"Today"},
-  {source:"World",title:"Historic Climate Agreement Reached at International Summit",snippet:"Nations agreed to accelerate renewable energy adoption, with binding commitments to reduce emissions 50% by 2035.",link:"https://www.reuters.com/world",time:"Today"},
-  {source:"Business",title:"Remote Work Trend Reshapes Commercial Real Estate Market",snippet:"Major cities report office vacancy rates at historic highs as companies embrace hybrid work models permanently.",link:"https://www.bbc.com/news/business",time:"Today"},
-  {source:"Science",title:"Breakthrough in Solid-State Battery Technology Announced",snippet:"A new lithium-sulfur battery design achieves 2x the energy density of current lithium-ion cells, promising longer range for EVs.",link:"https://www.reuters.com/technology",time:"Today"},
-  {source:"Culture",title:"Streaming Platforms Invest Heavily in Live Events",snippet:"Major streaming services are pivoting to live sports, concerts, and events as the next battleground for subscribers.",link:"https://www.bbc.com/news/entertainment-arts",time:"Today"},
-  {source:"Space",title:"Mars Sample Return Mission Gets New Timeline",snippet:"NASA and ESA announce updated plans to bring Martian soil samples to Earth by 2033, using a simplified mission architecture.",link:"https://www.nasa.gov/mars",time:"Today"}
+  {source:"Science",title:"James Webb Telescope Captures New Image of Distant Galaxy Formation",snippet:"The telescope's latest deep-field image reveals thousands of previously unseen galaxies forming in the early universe.",link:"https://www.nasa.gov/webb",time:"Today",image:""},
+  {source:"Technology",title:"Global Push for AI Safety Standards Gains Momentum",snippet:"Over 40 countries have now signed agreements to establish shared frameworks for artificial intelligence development.",link:"https://www.reuters.com/technology",time:"Today",image:""},
+  {source:"Health",title:"New Study Links Mediterranean Diet to Improved Cognitive Function",snippet:"Researchers found that adults following a Mediterranean diet showed significantly better memory over a 5-year period.",link:"https://www.bbc.com/news/health",time:"Today",image:""},
+  {source:"World",title:"Historic Climate Agreement Reached at International Summit",snippet:"Nations agreed to accelerate renewable energy adoption, with binding commitments to reduce emissions 50% by 2035.",link:"https://www.reuters.com/world",time:"Today",image:""},
+  {source:"Business",title:"Remote Work Trend Reshapes Commercial Real Estate Market",snippet:"Major cities report office vacancy rates at historic highs as companies embrace hybrid work models permanently.",link:"https://www.bbc.com/news/business",time:"Today",image:""},
+  {source:"Science",title:"Breakthrough in Solid-State Battery Technology Announced",snippet:"A new lithium-sulfur battery design achieves 2x the energy density of current lithium-ion cells.",link:"https://www.reuters.com/technology",time:"Today",image:""},
+  {source:"Culture",title:"Streaming Platforms Invest Heavily in Live Events",snippet:"Major streaming services are pivoting to live sports, concerts, and events as the next battleground for subscribers.",link:"https://www.bbc.com/news/entertainment-arts",time:"Today",image:""},
+  {source:"Space",title:"Mars Sample Return Mission Gets New Timeline",snippet:"NASA and ESA announce updated plans to bring Martian soil samples to Earth by 2033.",link:"https://www.nasa.gov/mars",time:"Today",image:""}
 ];
 
 async function fetchNews() {
-  const RSS2JSON = 'https://api.rss2json.com/v1/api.json?rss_url=';
-  const feed = RSS_FEEDS[Math.floor(Math.random() * RSS_FEEDS.length)];
-  try {
-    const res = await fetch(RSS2JSON + encodeURIComponent(feed.url));
-    if (!res.ok) throw new Error('Feed failed');
-    const data = await res.json();
-    if (data.status !== 'ok' || !data.items || !data.items.length) throw new Error('No items');
-    return data.items.slice(0, 8).map(item => ({
-      source: feed.name,
-      title: item.title,
-      snippet: (item.description || '').replace(/<[^>]*>/g, '').slice(0, 200) + '...',
-      link: item.link,
-      time: new Date(item.pubDate).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
-    }));
-  } catch (e) {
-    console.log('RSS fetch failed, using fallback news', e);
-    return FALLBACK_NEWS.sort(() => Math.random() - 0.5);
-  }
+  // Fetch from multiple feeds for variety, filter to today's articles
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const allArticles = [];
+
+  const feedPromises = RSS_FEEDS.map(async (feed) => {
+    try {
+      const res = await fetch(NEWS_API_URL + encodeURIComponent(feed.url));
+      if (!res.ok) return [];
+      const data = await res.json();
+      if (data.status !== 'ok' || !data.items) return [];
+      return data.items.map(item => {
+        const pubDate = new Date(item.pubDate);
+        // Extract image from enclosure, thumbnail, or content
+        let image = item.enclosure?.link || item.thumbnail || '';
+        if (!image && item.description) {
+          const imgMatch = item.description.match(/<img[^>]+src=["']([^"']+)["']/);
+          if (imgMatch) image = imgMatch[1];
+        }
+        return {
+          source: feed.name,
+          title: item.title,
+          snippet: (item.description || '').replace(/<[^>]*>/g, '').replace(/&#\d+;/g,' ').trim().slice(0, 200),
+          link: item.link,
+          time: pubDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }),
+          pubDate,
+          image: image || ''
+        };
+      });
+    } catch { return []; }
+  });
+
+  const results = await Promise.all(feedPromises);
+  results.forEach(items => allArticles.push(...items));
+
+  // Sort by date (newest first), prefer today's articles
+  allArticles.sort((a, b) => b.pubDate - a.pubDate);
+
+  // Take top 8 most recent
+  const topNews = allArticles.slice(0, 8);
+  return topNews.length >= 3 ? topNews : FALLBACK_NEWS.sort(() => Math.random() - 0.5);
 }
 // === MAIN APP LOGIC ===
 let cards = [];
@@ -330,9 +356,11 @@ function renderFeed() {
 }
 
 function renderNewsCard(n, idx) {
+  const imgHtml = n.image ? `<div class="news-image"><img src="${n.image}" alt="" onerror="this.parentElement.style.display='none'"></div>` : '';
   return `<div class="card news-card" data-index="${idx}">
     <span class="type-badge news">📰 News</span>
     <span class="card-counter">${idx+1} / ${cards.length}</span>
+    ${imgHtml}
     <div class="news-inner">
       <div class="news-source">${n.source}</div>
       <h2 class="news-headline">${n.title}</h2>
@@ -534,6 +562,9 @@ document.addEventListener('touchend', () => {
 
 // Keyboard & scroll
 document.addEventListener('keydown', e => {
+  const active = document.activeElement;
+  const isTyping = active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.isContentEditable);
+  if (isTyping) return;
   if (e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); goToCard(currentIndex + 1); }
   if (e.key === 'ArrowUp') { e.preventDefault(); goToCard(currentIndex - 1); }
 });
