@@ -306,8 +306,6 @@ function generateMathProblem() {
 function generateMemoryPattern(level) {
   const count = Math.min(3 + level, 6);
   const pattern = [];
-const count = Math.min(3 + level, 6);
-  const pattern = [];
   while (pattern.length < count) {
     const idx = Math.floor(Math.random() * 9);
     if (!pattern.includes(idx)) pattern.push(idx);
