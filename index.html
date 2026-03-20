@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <title>Morning Feed ☀️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0a; --card-bg: #161616; --card-news: #1a1a2e; --card-game: #1e1e1e;
+  --accent: #6c5ce7; --accent2: #00cec9; --accent3: #fd79a8; --accent4: #ffeaa7;
+  --text: #f5f5f5; --text-dim: #999; --text-muted: #666;
+  --radius: 24px; --safe-top: env(safe-area-inset-top, 0px);
+}
+html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+
+.app { height: 100%; width: 100%; position: relative; overflow: hidden; }
+
+/* Splash */
+.splash { position: fixed; inset: 0; background: var(--bg); z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s, transform 0.5s; }
+.splash.hidden { opacity: 0; transform: scale(1.1); pointer-events: none; }
+.splash h1 { font-family: 'DM Serif Display', serif; font-size: 2.5rem; margin-bottom: 0.5rem; }
+.splash p { color: var(--text-dim); margin-bottom: 2rem; }
+.splash .start-btn { padding: 1rem 3rem; font-size: 1.1rem; font-weight: 600; font-family: inherit; background: var(--accent); color: white; border: none; border-radius: 50px; cursor: pointer; transition: transform 0.2s; }
+.splash .start-btn:hover { transform: scale(1.05); }
+
+/* Feed container */
+.feed { height: 100%; width: 100%; transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform; }
+.card { height: 100vh; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; position: relative; overflow: hidden; }
+
+/* Progress dots */
+.progress { position: fixed; right: 12px; top: 50%; transform: translateY(-50%); z-index: 50; display: flex; flex-direction: column; gap: 6px; }
+.progress .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-muted); transition: all 0.3s; }
+.progress .dot.active { background: var(--accent); height: 20px; border-radius: 3px; }
+
+/* Swipe hint */
+.swipe-hint { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); color: var(--text-muted); font-size: 0.8rem; z-index: 50; animation: bounce 2s infinite; }
+@keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-8px); } }
+
+/* Type badge */
+.type-badge { position: absolute; top: calc(1.5rem + var(--safe-top)); left: 1.5rem; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.4rem 0.8rem; border-radius: 8px; z-index: 10; }
+.type-badge.news { background: rgba(108,92,231,0.2); color: #a29bfe; }
+.type-badge.game { background: rgba(0,206,201,0.2); color: #00cec9; }
+
+/* Card counter */
+.card-counter { position: absolute; top: calc(1.5rem + var(--safe-top)); right: 1.5rem; font-size: 0.75rem; color: var(--text-muted); z-index: 10; }
+
+/* === NEWS CARD === */
+.news-card { background: linear-gradient(135deg, var(--card-news) 0%, #16213e 100%); }
+.news-inner { max-width: 500px; width: 100%; }
+.news-source { font-size: 0.75rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; }
+.news-headline { font-family: 'DM Serif Display', serif; font-size: 1.8rem; line-height: 1.25; margin-bottom: 1rem; }
+.news-snippet { color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; }
+.news-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.9rem; padding: 0.6rem 1.2rem; border: 1px solid rgba(108,92,231,0.3); border-radius: 12px; transition: all 0.2s; }
+.news-link:hover { background: rgba(108,92,231,0.1); }
+.news-time { font-size: 0.75rem; color: var(--text-muted); margin-top: 1rem; }
+
+/* === GAME CARDS === */
+.game-card { background: var(--card-game); }
+.game-inner { max-width: 500px; width: 100%; text-align: center; }
+.game-title { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 0.5rem; }
+.game-desc { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 1.5rem; }
+.game-area { min-height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+/* Math game */
+.math-problem { font-size: 3rem; font-weight: 700; font-family: 'DM Serif Display', serif; margin-bottom: 1.5rem; color: var(--accent2); }
+.math-options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; width: 100%; max-width: 300px; }
+.math-options button { padding: 1rem; font-size: 1.2rem; font-weight: 600; font-family: inherit; background: rgba(255,255,255,0.05); border: 2px solid rgba(255,255,255,0.1); border-radius: 16px; color: var(--text); cursor: pointer; transition: all 0.2s; }
+.math-options button:hover { border-color: var(--accent2); background: rgba(0,206,201,0.1); }
+.math-options button.correct { background: rgba(0,206,201,0.2); border-color: var(--accent2); color: var(--accent2); }
+.math-options button.wrong { background: rgba(253,121,168,0.2); border-color: var(--accent3); color: var(--accent3); }
+
+/* Word scramble */
+.scrambled-word { font-size: 2.5rem; font-weight: 700; letter-spacing: 0.3em; color: var(--accent3); margin-bottom: 0.5rem; }
+.word-hint { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem; font-style: italic; }
+.word-input { background: rgba(255,255,255,0.05); border: 2px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1rem; font-size: 1.2rem; color: var(--text); text-align: center; width: 100%; max-width: 300px; font-family: inherit; outline: none; transition: border-color 0.2s; text-transform: lowercase; }
+.word-input:focus { border-color: var(--accent3); }
+.word-input.correct { border-color: var(--accent2); background: rgba(0,206,201,0.1); }
+.word-input.wrong { border-color: var(--accent3); animation: shake 0.4s; }
+@keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-8px); } 75% { transform: translateX(8px); } }
+
+/* Memory pattern */
+.memory-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.75rem; max-width: 280px; width: 100%; margin-bottom: 1rem; }
+.memory-cell { aspect-ratio: 1; border-radius: 16px; background: rgba(255,255,255,0.05); border: 2px solid rgba(255,255,255,0.08); cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+.memory-cell.lit { background: rgba(108,92,231,0.4); border-color: var(--accent); box-shadow: 0 0 20px rgba(108,92,231,0.3); }
+.memory-cell.player-correct { background: rgba(0,206,201,0.3); border-color: var(--accent2); }
+.memory-cell.player-wrong { background: rgba(253,121,168,0.3); border-color: var(--accent3); }
+.memory-msg { font-size: 0.9rem; color: var(--text-dim); min-height: 1.5rem; }
+
+/* Trivia */
+.trivia-question { font-size: 1.2rem; font-weight: 500; line-height: 1.5; margin-bottom: 1.5rem; max-width: 400px; }
+.trivia-options { display: flex; flex-direction: column; gap: 0.6rem; width: 100%; max-width: 400px; }
+.trivia-options button { padding: 0.9rem 1.2rem; font-size: 0.95rem; font-family: inherit; background: rgba(255,255,255,0.05); border: 2px solid rgba(255,255,255,0.1); border-radius: 14px; color: var(--text); cursor: pointer; text-align: left; transition: all 0.2s; }
+.trivia-options button:hover { border-color: var(--accent); }
+.trivia-options button.correct { background: rgba(0,206,201,0.2); border-color: var(--accent2); }
+.trivia-options button.wrong { background: rgba(253,121,168,0.2); border-color: var(--accent3); }
+
+/* Emoji puzzle */
+.emoji-puzzle { font-size: 2.5rem; margin-bottom: 0.75rem; letter-spacing: 0.2em; }
+.emoji-hint { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem; }
+
+/* Result feedback */
+.result-msg { margin-top: 1rem; font-weight: 600; font-size: 1rem; min-height: 1.5rem; }
+.result-msg.success { color: var(--accent2); }
+.result-msg.fail { color: var(--accent3); }
+
+/* Score */
+.score-bar { position: fixed; top: var(--safe-top); left: 0; right: 0; height: 48px; background: rgba(10,10,10,0.9); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; gap: 1.5rem; z-index: 50; padding: 0 1rem; }
+.score-item { font-size: 0.75rem; font-weight: 600; color: var(--text-dim); }
+.score-item span { color: var(--text); font-size: 0.9rem; }
+
+@media (max-width: 480px) {
+  .news-headline { font-size: 1.5rem; }
+  .math-problem { font-size: 2.5rem; }
+  .scrambled-word { font-size: 2rem; }
+  .card { padding: 1rem; }
+}
+  </style>
+</head>
+<body>
+
+<div class="app">
+  <div class="splash" id="splash">
+    <h1>Morning Feed ☀️</h1>
+    <p>News + brain games. Swipe to start your day.</p>
+    <button class="start-btn" onclick="startApp()">Let's Go</button>
+  </div>
+
+  <div class="score-bar" style="display:none" id="scoreBar">
+    <div class="score-item">🎯 <span id="scoreCorrect">0</span>/<span id="scoreTotal">0</span></div>
+    <div class="score-item">📊 <span id="scorePct">0%</span></div>
+  </div>
+
+  <div class="feed" id="feed"></div>
+
+  <div class="progress" id="progress"></div>
+  <div class="swipe-hint" id="swipeHint">↕ Swipe or scroll</div>
+</div>
+
+<script>
+// === GAME DATA & GENERATORS ===
+
+const WORD_BANK = [
+  {word:"galaxy",hint:"A collection of billions of stars"},
+  {word:"rhythm",hint:"A pattern of beats in music"},
+  {word:"cipher",hint:"A secret code"},
+  {word:"quartz",hint:"A common crystal mineral"},
+  {word:"sphinx",hint:"Mythical Egyptian creature"},
+  {word:"breeze",hint:"A gentle wind"},
+  {word:"fable",hint:"A short story with a moral"},
+  {word:"prism",hint:"Splits light into colors"},
+  {word:"ember",hint:"A glowing piece of coal"},
+  {word:"atlas",hint:"A book of maps"},
+  {word:"fjord",hint:"A narrow sea inlet between cliffs"},
+  {word:"bloom",hint:"When flowers open"},
+  {word:"dusk",hint:"The time just after sunset"},
+  {word:"nexus",hint:"A connection or link"},
+  {word:"haiku",hint:"A Japanese poem form"},
+  {word:"orbit",hint:"A path around a celestial body"},
+  {word:"pixel",hint:"The smallest unit of a digital image"},
+  {word:"valve",hint:"Controls the flow of liquid or gas"},
+  {word:"quirk",hint:"A peculiar behavior"},
+  {word:"epoch",hint:"A significant period of time"}
+];
+
+const TRIVIA = [
+  {q:"Which planet has the most moons?",options:["Jupiter","Saturn","Uranus","Neptune"],answer:1,fact:"Saturn has 146 confirmed moons as of 2024!"},
+  {q:"What's the hardest natural substance on Earth?",options:["Titanium","Diamond","Tungsten","Quartz"],answer:1,fact:"Diamond scores 10 on the Mohs hardness scale."},
+  {q:"How many bones does an adult human have?",options:["186","206","226","256"],answer:1,fact:"Babies are born with about 270, but many fuse together."},
+  {q:"Which country has the most time zones?",options:["Russia","USA","France","China"],answer:2,fact:"France has 12 time zones due to its overseas territories!"},
+  {q:"What is the smallest country in the world?",options:["Monaco","Vatican City","San Marino","Liechtenstein"],answer:1,fact:"Vatican City is just 0.17 square miles."},
+  {q:"What element does the Sun primarily fuse?",options:["Helium","Carbon","Hydrogen","Oxygen"],answer:2,fact:"The Sun converts 600 million tons of hydrogen per second."},
+  {q:"Which language has the most native speakers?",options:["English","Spanish","Hindi","Mandarin Chinese"],answer:3,fact:"Mandarin has about 920 million native speakers."},
+  {q:"How long is one day on Venus?",options:["24 hours","116 Earth days","243 Earth days","365 Earth days"],answer:2,fact:"A day on Venus is longer than its year!"},
+  {q:"What year was the first iPhone released?",options:["2005","2006","2007","2008"],answer:2,fact:"Steve Jobs unveiled it on January 9, 2007."},
+  {q:"Which ocean is the deepest?",options:["Atlantic","Indian","Pacific","Arctic"],answer:2,fact:"The Mariana Trench reaches 36,000 feet deep."},
+  {q:"What is the most spoken language in Africa?",options:["Swahili","Arabic","Hausa","Yoruba"],answer:1,fact:"Swahili is spoken by over 100 million people across East Africa."},
+  {q:"How many hearts does an octopus have?",options:["1","2","3","4"],answer:2,fact:"Two pump blood to the gills, one to the rest of the body."}
+];
+
+const EMOJI_PUZZLES = [
+  {emojis:"🎬🦁👑",answer:"the lion king",hint:"Disney classic, Hakuna Matata"},
+  {emojis:"🧙‍♂️💍🌋",answer:"lord of the rings",hint:"One ring to rule them all"},
+  {emojis:"⭐🔫🚀",answer:"star wars",hint:"A long time ago in a galaxy far far away"},
+  {emojis:"🦈🌊😱",answer:"jaws",hint:"You're gonna need a bigger boat"},
+  {emojis:"🧊🚢💔",answer:"titanic",hint:"Jack and Rose"},
+  {emojis:"🕷️🦸‍♂️🏙️",answer:"spider man",hint:"Friendly neighborhood hero"},
+  {emojis:"👻👻👻🔫🚗",answer:"ghostbusters",hint:"Who you gonna call?"},
+  {emojis:"🏴‍☠️🚢💀",answer:"pirates of the caribbean",hint:"Captain Jack Sparrow"},
+  {emojis:"🧪👨‍🔬💚",answer:"breaking bad",hint:"Say my name"},
+  {emojis:"👑🎮⚔️",answer:"game of thrones",hint:"Winter is coming"},
+  {emojis:"🏠⬆️🎈",answer:"up",hint:"Pixar, balloons, adventure"},
+  {emojis:"🐀👨‍🍳🇫🇷",answer:"ratatouille",hint:"Anyone can cook"}
+];
+
+function scrambleWord(word) {
+  let arr = word.split('');
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  const result = arr.join('');
+  return result === word ? scrambleWord(word) : result;
+}
+
+function generateMathProblem() {
+  const ops = ['+', '-', '×'];
+  const op = ops[Math.floor(Math.random() * ops.length)];
+  let a, b, answer;
+  if (op === '+') { a = Math.floor(Math.random()*50)+10; b = Math.floor(Math.random()*50)+10; answer = a+b; }
+  else if (op === '-') { a = Math.floor(Math.random()*50)+30; b = Math.floor(Math.random()*30)+5; answer = a-b; }
+  else { a = Math.floor(Math.random()*12)+2; b = Math.floor(Math.random()*12)+2; answer = a*b; }
+  const wrong = [answer + Math.floor(Math.random()*10)+1, answer - Math.floor(Math.random()*10)-1, answer + Math.floor(Math.random()*20)-10].filter(x => x !== answer && x > 0);
+  const options = [answer, ...wrong.slice(0,3)];
+  while (options.length < 4) options.push(answer + options.length * 3);
+  options.sort(() => Math.random() - 0.5);
+  return { display: `${a} ${op} ${b}`, answer, options };
+}
+
+function generateMemoryPattern(level) {
+  const count = Math.min(3 + level, 6);
+  const pattern = [];
+  while (pattern.length < count) {
+    const idx = Math.floor(Math.random() * 9);
+    if (!pattern.includes(idx)) pattern.push(idx);
+  }
+  return pattern;
+}
+// === NEWS FETCHING ===
+const RSS_FEEDS = [
+  { name: 'BBC News', url: 'https://feeds.bbci.co.uk/news/rss.xml' },
+  { name: 'Reuters', url: 'https://feeds.reuters.com/reuters/topNews' },
+  { name: 'NPR', url: 'https://feeds.npr.org/1001/rss.xml' },
+  { name: 'AP News', url: 'https://rsshub.app/apnews/topics/apf-topnews' }
+];
+
+const FALLBACK_NEWS = [
+  {source:"Science",title:"James Webb Telescope Captures New Image of Distant Galaxy Formation",snippet:"The telescope's latest deep-field image reveals thousands of previously unseen galaxies forming in the early universe, reshaping our understanding of cosmic evolution.",link:"https://www.nasa.gov/webb",time:"Today"},
+  {source:"Technology",title:"Global Push for AI Safety Standards Gains Momentum",snippet:"Over 40 countries have now signed agreements to establish shared frameworks for artificial intelligence development and deployment.",link:"https://www.reuters.com/technology",time:"Today"},
+  {source:"Health",title:"New Study Links Mediterranean Diet to Improved Cognitive Function",snippet:"Researchers found that adults following a Mediterranean diet showed significantly better memory and processing speed over a 5-year period.",link:"https://www.bbc.com/news/health",time:"Today"},
+  {source:"World",title:"Historic Climate Agreement Reached at International Summit",snippet:"Nations agreed to accelerate renewable energy adoption, with binding commitments to reduce emissions 50% by 2035.",link:"https://www.reuters.com/world",time:"Today"},
+  {source:"Business",title:"Remote Work Trend Reshapes Commercial Real Estate Market",snippet:"Major cities report office vacancy rates at historic highs as companies embrace hybrid work models permanently.",link:"https://www.bbc.com/news/business",time:"Today"},
+  {source:"Science",title:"Breakthrough in Solid-State Battery Technology Announced",snippet:"A new lithium-sulfur battery design achieves 2x the energy density of current lithium-ion cells, promising longer range for EVs.",link:"https://www.reuters.com/technology",time:"Today"},
+  {source:"Culture",title:"Streaming Platforms Invest Heavily in Live Events",snippet:"Major streaming services are pivoting to live sports, concerts, and events as the next battleground for subscribers.",link:"https://www.bbc.com/news/entertainment-arts",time:"Today"},
+  {source:"Space",title:"Mars Sample Return Mission Gets New Timeline",snippet:"NASA and ESA announce updated plans to bring Martian soil samples to Earth by 2033, using a simplified mission architecture.",link:"https://www.nasa.gov/mars",time:"Today"}
+];
+
+async function fetchNews() {
+  const RSS2JSON = 'https://api.rss2json.com/v1/api.json?rss_url=';
+  const feed = RSS_FEEDS[Math.floor(Math.random() * RSS_FEEDS.length)];
+  try {
+    const res = await fetch(RSS2JSON + encodeURIComponent(feed.url));
+    if (!res.ok) throw new Error('Feed failed');
+    const data = await res.json();
+    if (data.status !== 'ok' || !data.items || !data.items.length) throw new Error('No items');
+    return data.items.slice(0, 8).map(item => ({
+      source: feed.name,
+      title: item.title,
+      snippet: (item.description || '').replace(/<[^>]*>/g, '').slice(0, 200) + '...',
+      link: item.link,
+      time: new Date(item.pubDate).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
+    }));
+  } catch (e) {
+    console.log('RSS fetch failed, using fallback news', e);
+    return FALLBACK_NEWS.sort(() => Math.random() - 0.5);
+  }
+}
+// === MAIN APP LOGIC ===
+let cards = [];
+let currentIndex = 0;
+let score = { correct: 0, total: 0 };
+let memoryLevel = 0;
+let touchStartY = 0;
+let touchDeltaY = 0;
+let isAnimating = false;
+
+async function buildFeed() {
+  const newsItems = await fetchNews();
+  const gameTypes = ['math','scramble','memory','trivia','emoji'];
+  const usedTrivia = new Set();
+  const usedEmoji = new Set();
+  const usedWords = new Set();
+  cards = [];
+
+  // Interleave: news, game, news, game...
+  let newsIdx = 0;
+  for (let i = 0; i < 16; i++) {
+    if (i % 2 === 0 && newsIdx < newsItems.length) {
+      cards.push({ type: 'news', data: newsItems[newsIdx++] });
+    } else {
+      const gameType = gameTypes[Math.floor(Math.random() * gameTypes.length)];
+      let gameData;
+      if (gameType === 'math') {
+        gameData = { game: 'math', ...generateMathProblem() };
+      } else if (gameType === 'scramble') {
+        let w;
+        do { w = WORD_BANK[Math.floor(Math.random()*WORD_BANK.length)]; } while (usedWords.has(w.word) && usedWords.size < WORD_BANK.length);
+        usedWords.add(w.word);
+        gameData = { game: 'scramble', word: w.word, hint: w.hint, scrambled: scrambleWord(w.word) };
+      } else if (gameType === 'memory') {
+        gameData = { game: 'memory', pattern: generateMemoryPattern(memoryLevel) };
+        memoryLevel++;
+      } else if (gameType === 'trivia') {
+        let t;
+        do { t = TRIVIA[Math.floor(Math.random()*TRIVIA.length)]; } while (usedTrivia.has(t.q) && usedTrivia.size < TRIVIA.length);
+        usedTrivia.add(t.q);
+        gameData = { game: 'trivia', ...t };
+      } else {
+        let e;
+        do { e = EMOJI_PUZZLES[Math.floor(Math.random()*EMOJI_PUZZLES.length)]; } while (usedEmoji.has(e.answer) && usedEmoji.size < EMOJI_PUZZLES.length);
+        usedEmoji.add(e.answer);
+        gameData = { game: 'emoji', ...e };
+      }
+      cards.push({ type: 'game', data: gameData });
+    }
+  }
+  renderFeed();
+}
+
+function renderFeed() {
+  const feed = document.getElementById('feed');
+  feed.innerHTML = cards.map((card, i) => {
+    if (card.type === 'news') return renderNewsCard(card.data, i);
+    return renderGameCard(card.data, i);
+  }).join('');
+  updateProgress();
+  updateScore();
+}
+
+function renderNewsCard(n, idx) {
+  return `<div class="card news-card" data-index="${idx}">
+    <span class="type-badge news">📰 News</span>
+    <span class="card-counter">${idx+1} / ${cards.length}</span>
+    <div class="news-inner">
+      <div class="news-source">${n.source}</div>
+      <h2 class="news-headline">${n.title}</h2>
+      <p class="news-snippet">${n.snippet}</p>
+      <a class="news-link" href="${n.link}" target="_blank" rel="noopener">Read Full Article →</a>
+      <div class="news-time">${n.time}</div>
+    </div>
+  </div>`;
+}
+
+function renderGameCard(g, idx) {
+  let inner = '';
+  if (g.game === 'math') {
+    inner = `<div class="game-title">⚡ Quick Math</div>
+      <div class="game-desc">Solve it fast!</div>
+      <div class="game-area">
+        <div class="math-problem">${g.display}</div>
+        <div class="math-options">${g.options.map(o => `<button onclick="checkMath(this,${o},${g.answer},${idx})">${o}</button>`).join('')}</div>
+        <div class="result-msg" id="result-${idx}"></div>
+      </div>`;
+  } else if (g.game === 'scramble') {
+    inner = `<div class="game-title">🔤 Word Scramble</div>
+      <div class="game-desc">Unscramble the letters!</div>
+      <div class="game-area">
+        <div class="scrambled-word">${g.scrambled.toUpperCase()}</div>
+        <div class="word-hint">${g.hint}</div>
+        <input class="word-input" id="input-${idx}" placeholder="Type your answer..." onkeydown="if(event.key==='Enter')checkScramble(${idx},'${g.word}')" autocomplete="off" autocapitalize="off">
+        <div class="result-msg" id="result-${idx}"></div>
+      </div>`;
+  } else if (g.game === 'memory') {
+    inner = `<div class="game-title">🧠 Memory Pattern</div>
+      <div class="game-desc">Watch the pattern, then repeat it!</div>
+      <div class="game-area">
+        <div class="memory-grid" id="mgrid-${idx}">${Array(9).fill(0).map((_,i) => `<div class="memory-cell" data-cell="${i}" onclick="memoryClick(${idx},${i})"></div>`).join('')}</div>
+        <div class="memory-msg" id="mmsg-${idx}">Watch carefully...</div>
+        <div class="result-msg" id="result-${idx}"></div>
+      </div>`;
+  } else if (g.game === 'trivia') {
+    inner = `<div class="game-title">🧩 Trivia</div>
+      <div class="game-desc">Test your knowledge!</div>
+      <div class="game-area">
+        <div class="trivia-question">${g.q}</div>
+        <div class="trivia-options">${g.options.map((o,i) => `<button onclick="checkTrivia(this,${i},${g.answer},${idx},'${g.fact.replace(/'/g,"\\'")}')">${o}</button>`).join('')}</div>
+        <div class="result-msg" id="result-${idx}"></div>
+      </div>`;
+  } else if (g.game === 'emoji') {
+    inner = `<div class="game-title">🎬 Emoji Decode</div>
+      <div class="game-desc">Guess the movie or show!</div>
+      <div class="game-area">
+        <div class="emoji-puzzle">${g.emojis}</div>
+        <div class="emoji-hint">Hint: ${g.hint}</div>
+        <input class="word-input" id="input-${idx}" placeholder="Type your guess..." onkeydown="if(event.key==='Enter')checkEmoji(${idx},'${g.answer}')" autocomplete="off" autocapitalize="off">
+        <div class="result-msg" id="result-${idx}"></div>
+      </div>`;
+  }
+  return `<div class="card game-card" data-index="${idx}">
+    <span class="type-badge game">🎮 Game</span>
+    <span class="card-counter">${idx+1} / ${cards.length}</span>
+    <div class="game-inner">${inner}</div>
+  </div>`;
+}
+
+// === GAME HANDLERS ===
+function checkMath(btn, selected, answer, idx) {
+  if (btn.parentElement.dataset.answered) return;
+  btn.parentElement.dataset.answered = 'true';
+  const isCorrect = selected === answer;
+  btn.classList.add(isCorrect ? 'correct' : 'wrong');
+  if (!isCorrect) btn.parentElement.querySelector(`button:nth-child(${[...btn.parentElement.children].findIndex(b => parseInt(b.textContent)===answer)+1})`).classList.add('correct');
+  showResult(idx, isCorrect);
+}
+
+function checkScramble(idx, word) {
+  const input = document.getElementById('input-'+idx);
+  if (input.dataset.answered) return;
+  const isCorrect = input.value.trim().toLowerCase() === word;
+  input.dataset.answered = 'true';
+  input.classList.add(isCorrect ? 'correct' : 'wrong');
+  if (!isCorrect) input.value = word;
+  showResult(idx, isCorrect);
+}
+
+function checkTrivia(btn, selected, answer, idx, fact) {
+  if (btn.parentElement.dataset.answered) return;
+  btn.parentElement.dataset.answered = 'true';
+  const isCorrect = selected === answer;
+  btn.classList.add(isCorrect ? 'correct' : 'wrong');
+  if (!isCorrect) btn.parentElement.children[answer].classList.add('correct');
+  const el = document.getElementById('result-'+idx);
+  el.className = 'result-msg ' + (isCorrect ? 'success' : 'fail');
+  el.textContent = (isCorrect ? '✅ ' : '❌ ') + fact;
+  score.total++; if (isCorrect) score.correct++;
+  updateScore();
+}
+
+function checkEmoji(idx, answer) {
+  const input = document.getElementById('input-'+idx);
+  if (input.dataset.answered) return;
+  const guess = input.value.trim().toLowerCase().replace(/[^a-z ]/g,'');
+  const isCorrect = answer.split(' ').every(w => guess.includes(w));
+  input.dataset.answered = 'true';
+  input.classList.add(isCorrect ? 'correct' : 'wrong');
+  if (!isCorrect) input.value = answer;
+  showResult(idx, isCorrect);
+}
+
+// Memory game state
+const memoryState = {};
+function startMemory(idx) {
+  const card = cards[idx];
+  if (!card || card.type !== 'game' || card.data.game !== 'memory') return;
+  const pattern = card.data.pattern;
+  memoryState[idx] = { pattern, playerIdx: 0, phase: 'showing' };
+  const grid = document.getElementById('mgrid-'+idx);
+  if (!grid) return;
+  const msg = document.getElementById('mmsg-'+idx);
+  msg.textContent = 'Watch carefully...';
+  let i = 0;
+  const showNext = () => {
+    if (i > 0) grid.children[pattern[i-1]].classList.remove('lit');
+    if (i < pattern.length) {
+      grid.children[pattern[i]].classList.add('lit');
+      i++;
+      setTimeout(showNext, 600);
+    } else {
+      memoryState[idx].phase = 'input';
+      msg.textContent = 'Your turn! Tap the cells in order.';
+    }
+  };
+  setTimeout(showNext, 500);
+}
+
+function memoryClick(idx, cell) {
+  const state = memoryState[idx];
+  if (!state || state.phase !== 'input') return;
+  const grid = document.getElementById('mgrid-'+idx);
+  if (cell === state.pattern[state.playerIdx]) {
+    grid.children[cell].classList.add('player-correct');
+    state.playerIdx++;
+    if (state.playerIdx === state.pattern.length) {
+      state.phase = 'done';
+      showResult(idx, true);
+      document.getElementById('mmsg-'+idx).textContent = 'Perfect! 🎉';
+    }
+  } else {
+    grid.children[cell].classList.add('player-wrong');
+    state.phase = 'done';
+    state.pattern.forEach(p => grid.children[p].classList.add('lit'));
+    showResult(idx, false);
+    document.getElementById('mmsg-'+idx).textContent = 'Not quite! Here was the pattern.';
+  }
+}
+
+function showResult(idx, isCorrect) {
+  const el = document.getElementById('result-'+idx);
+  el.className = 'result-msg ' + (isCorrect ? 'success' : 'fail');
+  el.textContent = isCorrect ? '✅ Nice one!' : '❌ Not quite!';
+  score.total++; if (isCorrect) score.correct++;
+  updateScore();
+}
+
+function updateScore() {
+  document.getElementById('scoreCorrect').textContent = score.correct;
+  document.getElementById('scoreTotal').textContent = score.total;
+  const pct = score.total > 0 ? Math.round(score.correct/score.total*100) : 0;
+  document.getElementById('scorePct').textContent = pct + '%';
+}
+
+function updateProgress() {
+  const dots = document.getElementById('progress');
+  dots.innerHTML = cards.map((_,i) => `<div class="dot ${i===currentIndex?'active':''}"></div>`).join('');
+}
+
+function goToCard(idx) {
+  if (idx < 0 || idx >= cards.length || isAnimating) return;
+  isAnimating = true;
+  currentIndex = idx;
+  const feed = document.getElementById('feed');
+  feed.style.transform = `translateY(-${idx * 100}vh)`;
+  updateProgress();
+  // Start memory game if applicable
+  const card = cards[idx];
+  if (card && card.type === 'game' && card.data.game === 'memory' && !memoryState[idx]) {
+    setTimeout(() => startMemory(idx), 600);
+  }
+  setTimeout(() => { isAnimating = false; }, 450);
+}
+
+// Touch handling
+document.addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, { passive: true });
+document.addEventListener('touchmove', e => { touchDeltaY = e.touches[0].clientY - touchStartY; }, { passive: true });
+document.addEventListener('touchend', () => {
+  if (Math.abs(touchDeltaY) > 50) {
+    if (touchDeltaY < 0) goToCard(currentIndex + 1);
+    else goToCard(currentIndex - 1);
+  }
+  touchDeltaY = 0;
+});
+
+// Keyboard & scroll
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); goToCard(currentIndex + 1); }
+  if (e.key === 'ArrowUp') { e.preventDefault(); goToCard(currentIndex - 1); }
+});
+document.addEventListener('wheel', e => {
+  e.preventDefault();
+  if (e.deltaY > 30) goToCard(currentIndex + 1);
+  else if (e.deltaY < -30) goToCard(currentIndex - 1);
+}, { passive: false });
+
+// Start
+async function startApp() {
+  document.querySelector('.splash').classList.add('hidden');
+  await buildFeed();
+  goToCard(0);
+}
+// Show score bar after start
+const origStartApp = startApp;
+startApp = async function() {
+  document.getElementById('scoreBar').style.display = 'flex';
+  setTimeout(() => document.getElementById('swipeHint').style.display = 'none', 5000);
+  await origStartApp();
+};
+</script>
+</body>
+</html>
