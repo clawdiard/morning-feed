@@ -1,96 +1,86 @@
 {
-  "date": "2026-03-22",
-  "generated_at": "2026-03-22T10:00:00Z",
+  "date": "2026-03-23",
+  "generatedAt": "2026-03-23T10:00:00Z",
   "articles": [
     {
-      "rank": 1,
-      "title": "Iranian missiles injure 160 in towns near Israeli nuclear site",
-      "source": "BBC News",
-      "snippet": "Israel is investigating how ballistic missiles got through the country's sophisticated air defences.",
-      "link": "https://www.bbc.com/news/articles/c9qdvnv13qdo",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c825/live/d7fc6990-25c3-11f1-b1ce-2dccb029f244.jpg",
-      "published": "2026-03-22T09:35:02Z"
-    },
-    {
-      "rank": 2,
-      "title": "Trump Is Finally Eyeing an Exit From Iran. But Will He Take It?",
-      "source": "The New York Times",
-      "snippet": "President Trump says he is considering \"winding down\" operations in Iran. But many of his original war goals remain unaccomplished.",
-      "link": "https://www.nytimes.com/2026/03/21/us/politics/trump-iran-offramp.html",
-      "image": "https://static01.nyt.com/images/2026/03/21/multimedia/21dc-assess-top-qtkg/21dc-assess-top-qtkg-mediumSquareAt3X.jpg",
-      "published": "2026-03-22T01:34:39Z"
-    },
-    {
-      "rank": 3,
-      "title": "Foreign secretary denounces 'reckless Iran threats' after missiles fired at Diego Garcia",
-      "source": "BBC News",
-      "snippet": "Iran reportedly fired two ballistic missiles at Indian Ocean base, but neither reached the target.",
-      "link": "https://www.bbc.com/news/articles/c5yljdgwppzo",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8638/live/91dff080-25a5-11f1-934f-036468834728.jpg",
-      "published": "2026-03-22T02:42:39Z"
-    },
-    {
-      "rank": 4,
-      "title": "One gas station, two drivers and three fill-ups: The Iran war hits home",
-      "source": "The Washington Post",
-      "snippet": "In Colorado, where gas prices have surged higher than the rest of the country, the impact of the Iran war has changed daily lives for many. But not equally.",
-      "link": "https://www.washingtonpost.com/nation/2026/03/22/iran-war-gas-price-surge/",
+      "title": "2 Pilots Dead After Plane Hits Vehicle While Landing at LaGuardia Airport",
+      "source": "Washington Post",
+      "snippet": "The airport is closed during an investigation of the incident, which happened when an Air Canada Express passenger jet struck a firefighting vehicle on the runway.",
+      "link": "https://www.washingtonpost.com/transportation/2026/03/23/us-airport-laguardia-air-canada-plane/",
       "image": null,
-      "published": "2026-03-22T09:00:50Z"
+      "publishedAt": "2026-03-23T09:28:15Z"
     },
     {
-      "rank": 5,
-      "title": "Cuba's power grid collapses leaving it without electricity for the 3rd time this month",
-      "source": "NPR",
-      "snippet": "Cuba's power grid collapsed Saturday leaving the country without electricity for a third time in March as the communist government battles with a decaying infrastructure and a U.S.-imposed oil blockade.",
-      "link": "https://www.npr.org/2026/03/22/nx-s1-5756288/cubas-power-grid-collapses",
-      "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/5262x3508+0+0/resize/5262x3508!/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Fca%2Fad%2F2f8540504a4e8dcdd3aefcdf7420%2Fap26081107968406.jpg",
-      "published": "2026-03-22T08:12:26Z"
-    },
-    {
-      "rank": 6,
-      "title": "The Supreme Court Could Make it Harder to Vote by Mail in the Midterms",
-      "source": "The New York Times",
-      "snippet": "The Republican National Committee wants to toss ballots arriving after Election Day. Critics say thousands of votes — a majority cast by Democrats — are at stake.",
-      "link": "https://www.nytimes.com/2026/03/22/us/politics/the-supreme-court-could-make-it-harder-to-vote-by-mail-in-the-midterms.html",
-      "image": "https://static01.nyt.com/images/2026/03/22/multimedia/22pol-scotusballot-jlqb/22pol-scotusballot-jlqb-mediumSquareAt3X.jpg",
-      "published": "2026-03-22T09:00:53Z"
-    },
-    {
-      "rank": 7,
-      "title": "A strike on a hospital in Sudan killed at least 64 people, WHO says",
-      "source": "NPR",
-      "snippet": "At least 64 people were killed, including at least 13 children, in a strike on a hospital in Sudan's western Darfur region last week, the World Health Organization said Saturday.",
-      "link": "https://www.npr.org/2026/03/22/nx-s1-5756283/strike-hospital-sudan-killed-64",
-      "image": null,
-      "published": "2026-03-22T08:04:16Z"
-    },
-    {
-      "rank": 8,
-      "title": "Robert Mueller, ex-FBI chief who led Trump-Russia investigation, dies at 81",
+      "title": "Asia Stocks Slide as US and Iran Threaten to Escalate War",
       "source": "BBC News",
-      "snippet": "A former FBI director, Mueller led the high-profile inquiry into alleged Russian interference in the 2016 US election.",
-      "link": "https://www.bbc.com/news/articles/c8dlj6gv0q6o",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0e97/live/79099360-2553-11f1-8abe-15374f35b052.jpg",
-      "published": "2026-03-22T01:04:57Z"
+      "snippet": "The International Energy Agency chief said the war could lead to the world's worst energy crisis in decades.",
+      "link": "https://www.bbc.com/news/articles/czex56kwxxzo",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3270/live/4bbe7e40-265f-11f1-a935-2f8ae5ecc5e6.jpg",
+      "publishedAt": "2026-03-23T08:11:01Z"
     },
     {
-      "rank": 9,
-      "title": "As War Disrupts India's Gulf Ties, Economy Faces 'New Broadside'",
-      "source": "The New York Times",
-      "snippet": "Generations of Indian workers and businesses have turned the Arab side of the Gulf into a vital appendage of their own country.",
-      "link": "https://www.nytimes.com/2026/03/22/business/india-economy-middle-east.html",
-      "image": "https://static01.nyt.com/images/2026/03/20/multimedia/Biz-Iran-India-Gulf-01-fklz/Biz-Iran-India-Gulf-01-fklz-mediumSquareAt3X.jpg",
-      "published": "2026-03-22T04:42:38Z"
+      "title": "Iranians Fear Trump's Threat to Strike Power Plants",
+      "source": "New York Times",
+      "snippet": "With President Trump threatening to strike Iranian power plants, some war-weary civilians are panicking over a possible new debacle.",
+      "link": "https://www.nytimes.com/2026/03/22/world/middleeast/iran-trump-power-plants.html",
+      "image": "https://static01.nyt.com/images/2026/04/22/multimedia/22israel-iran-iranians-power-wtfz/22israel-iran-iranians-power-wtfz-mediumSquareAt3X.jpg",
+      "publishedAt": "2026-03-23T09:24:24Z"
     },
     {
-      "rank": 10,
-      "title": "Airport security lines are long. Here's what to know if you're flying",
+      "title": "Israel's Missile Defense Under Scrutiny After Iranian Attack",
+      "source": "New York Times",
+      "snippet": "Two missiles landed hours apart, wreaking havoc in two towns near a heavily guarded nuclear site in the Negev Desert.",
+      "link": "https://www.nytimes.com/2026/03/22/world/middleeast/israel-missile-defense-iran.html",
+      "image": "https://static01.nyt.com/images/2026/03/22/multimedia/22israel-defenses-new-kflc/22israel-defenses-new-kflc-mediumSquareAt3X.jpg",
+      "publishedAt": "2026-03-23T03:34:34Z"
+    },
+    {
+      "title": "New York's LaGuardia Airport Closed After Jet Collides with Firefighting Vehicle",
       "source": "NPR",
-      "snippet": "Travel experts say passengers need to be prepared, and patient, amid the government shutdown. Until a deal is reached, officials say airport disruptions and delays could get even worse.",
-      "link": "https://www.npr.org/2026/03/21/nx-s1-5755796/airport-security-tsa-lines-travel-tips",
-      "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/7338x4892+0+0/resize/7338x4892!/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Fb6%2F1b%2Fdfb537d34623b7db44264cb9d2c6%2Fgettyimages-2267037536.jpg",
-      "published": "2026-03-21T21:40:43Z"
+      "snippet": "An Air Canada regional jet struck a fire truck on the runway after landing at New York's LaGuardia Airport late Sunday night. Two people were killed.",
+      "link": "https://www.npr.org/2026/03/23/g-s1-114773/new-york-laguardia-jet-collides-with-vehicle",
+      "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/2892x1928+0+0/resize/2892x1928!/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F0e%2Fa9%2F270fec1c4158a212fe77b6ffe6d4%2Fap26082243437167.jpg",
+      "publishedAt": "2026-03-23T08:46:31Z"
+    },
+    {
+      "title": "UN Warns Earth's Climate Being 'Pushed Beyond Its Limits' as El Niño Looms",
+      "source": "BBC News",
+      "snippet": "The Earth's climate is further out of balance than at any time in recorded history, the UN's weather agency says.",
+      "link": "https://www.bbc.com/news/articles/c203rdxkezwo",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/2258/live/cfe36f80-2689-11f1-934f-036468834728.png",
+      "publishedAt": "2026-03-23T04:06:22Z"
+    },
+    {
+      "title": "ICE to Help TSA at Airports Amid Partial Shutdown, Trump's Border Czar Says",
+      "source": "New York Times",
+      "snippet": "Tom Homan cast the operation largely as one to help ease long security lines. The Homeland Security Department said 14 airports across the country would be involved.",
+      "link": "https://www.nytimes.com/2026/03/22/us/politics/ice-airports-homan-trump.html",
+      "image": "https://static01.nyt.com/images/2026/03/22/multimedia/22dc-homan-airports1-kvpl/22dc-homan-airports1-kvpl-mediumSquareAt3X.jpg",
+      "publishedAt": "2026-03-23T03:12:29Z"
+    },
+    {
+      "title": "Doubts from Key Republicans on Surgeon General Test MAHA's Political Power",
+      "source": "Washington Post",
+      "snippet": "Casey Means faces pushback from some Republicans over her refusal to forcefully recommend vaccines.",
+      "link": "https://www.washingtonpost.com/health/2026/03/23/casey-means-surgeon-general-nomination-stalled-maha/",
+      "image": null,
+      "publishedAt": "2026-03-23T10:00:00Z"
+    },
+    {
+      "title": "Worried About a Shaky Stock Market? This Is What Financial Advisers Suggest",
+      "source": "NPR",
+      "snippet": "Their answer depends on how soon you need to tap into your funds — and it might simply be \"do nothing.\"",
+      "link": "https://www.npr.org/2026/03/23/nx-s1-5742568/iran-war-investments-retirement-529-stock-market",
+      "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/6000x4000+0+0/resize/6000x4000!/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Fb5%2F02%2F6af1dfd540e785967a2d92bf3f70%2Fgettyimages-2264634610.jpg",
+      "publishedAt": "2026-03-23T09:00:00Z"
+    },
+    {
+      "title": "British Couple in Iran Prison Say Situation Is 'Life-Threatening'",
+      "source": "BBC News",
+      "snippet": "Craig and Lindsay Foreman are being held in Tehran's Evin prison amid ongoing attacks on Iran.",
+      "link": "https://www.bbc.com/news/articles/cew72ll8245o",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9734/live/1aaaa930-262a-11f1-aad6-2d605a562384.jpg",
+      "publishedAt": "2026-03-23T06:11:00Z"
     }
   ]
 }
