@@ -1,86 +1,76 @@
 {
-  "date": "2026-03-23",
-  "generatedAt": "2026-03-23T10:00:00Z",
+  "date": "2026-03-24",
+  "fetchedAt": "2026-03-24T10:00:00Z",
   "articles": [
     {
-      "title": "2 Pilots Dead After Plane Hits Vehicle While Landing at LaGuardia Airport",
-      "source": "Washington Post",
-      "snippet": "The airport is closed during an investigation of the incident, which happened when an Air Canada Express passenger jet struck a firefighting vehicle on the runway.",
-      "link": "https://www.washingtonpost.com/transportation/2026/03/23/us-airport-laguardia-air-canada-plane/",
-      "image": null,
-      "publishedAt": "2026-03-23T09:28:15Z"
+      "title": "Trump Delays Threat to Iran, but War Negotiations Are in Early Stage",
+      "source": "The New York Times",
+      "snippet": "President Trump postponed his threat to strike power plants in Iran, citing \"productive conversations\" with the Iranians. But officials said the talks were in an early stage and not substantive.",
+      "link": "https://www.nytimes.com/2026/03/23/us/politics/trump-iran-gas-oil-strait.html",
+      "image": "https://static01.nyt.com/images/2026/03/23/multimedia/23DC-PREXY-jghk/23DC-PREXY-jghk-mediumSquareAt3X.jpg"
     },
     {
-      "title": "Asia Stocks Slide as US and Iran Threaten to Escalate War",
+      "title": "Colombian Military Plane Crash Kills at Least 66",
       "source": "BBC News",
-      "snippet": "The International Energy Agency chief said the war could lead to the world's worst energy crisis in decades.",
-      "link": "https://www.bbc.com/news/articles/czex56kwxxzo",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3270/live/4bbe7e40-265f-11f1-a935-2f8ae5ecc5e6.jpg",
-      "publishedAt": "2026-03-23T08:11:01Z"
+      "snippet": "Colombia's defence minister says it was a \"tragic accident\" but the cause is not yet clear. A military cargo plane with 128 people on board crashed shortly after taking off in southwestern Colombia.",
+      "link": "https://www.bbc.com/news/articles/c8dlmrjn1l2o",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f3e8/live/3b34c580-26e0-11f1-908d-0f187797fc2f.jpg"
     },
     {
-      "title": "Iranians Fear Trump's Threat to Strike Power Plants",
-      "source": "New York Times",
-      "snippet": "With President Trump threatening to strike Iranian power plants, some war-weary civilians are panicking over a possible new debacle.",
-      "link": "https://www.nytimes.com/2026/03/22/world/middleeast/iran-trump-power-plants.html",
-      "image": "https://static01.nyt.com/images/2026/04/22/multimedia/22israel-iran-iranians-power-wtfz/22israel-iran-iranians-power-wtfz-mediumSquareAt3X.jpg",
-      "publishedAt": "2026-03-23T09:24:24Z"
+      "title": "In LaGuardia Crash That Killed 2, Call to 'Stop!' Came Too Late",
+      "source": "The New York Times",
+      "snippet": "A collision between an Air Canada Express jet and a fire truck on Sunday night left two pilots dead and dozens injured. The air traffic controller reportedly said he 'messed up'.",
+      "link": "https://www.nytimes.com/2026/03/23/nyregion/air-canada-crash-laguardia-nyc.html",
+      "image": "https://static01.nyt.com/images/2026/03/23/multimedia/23met-lga-crash-pjwc/23met-lga-crash-pjwc-mediumSquareAt3X.jpg"
     },
     {
-      "title": "Israel's Missile Defense Under Scrutiny After Iranian Attack",
-      "source": "New York Times",
-      "snippet": "Two missiles landed hours apart, wreaking havoc in two towns near a heavily guarded nuclear site in the Negev Desert.",
-      "link": "https://www.nytimes.com/2026/03/22/world/middleeast/israel-missile-defense-iran.html",
-      "image": "https://static01.nyt.com/images/2026/03/22/multimedia/22israel-defenses-new-kflc/22israel-defenses-new-kflc-mediumSquareAt3X.jpg",
-      "publishedAt": "2026-03-23T03:34:34Z"
+      "title": "Oil Back Above $100 as Conflicting Claims Emerge on US-Iran Talks",
+      "source": "BBC News",
+      "snippet": "Global energy prices plunged on Monday after Trump said he had postponed strikes on Iranian power plants, but oil has rebounded amid uncertainty over negotiations.",
+      "link": "https://www.bbc.com/news/articles/c625j162yy6o",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9be4/live/e7c06920-2736-11f1-9d51-6b2897f6c543.jpg"
     },
     {
-      "title": "New York's LaGuardia Airport Closed After Jet Collides with Firefighting Vehicle",
+      "title": "Australia and EU Agree Sweeping Trade Deal in Face of Global Uncertainty",
+      "source": "BBC News",
+      "snippet": "Australia and the EU sign sweeping trade and security deals after years of negotiations.",
+      "link": "https://www.bbc.com/news/articles/cly6g6l6lq7o",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3d82/live/42f9f990-2733-11f1-af86-772f4b04c31a.jpg"
+    },
+    {
+      "title": "Markwayne Mullin Confirmed as Homeland Security Secretary",
+      "source": "The New York Times",
+      "snippet": "A Cherokee Nation member who has served as Oklahoma's junior senator, Mr. Mullin will take charge at a pivotal time.",
+      "link": "https://www.nytimes.com/2026/03/23/us/politics/markwayne-mullin-confirmed-homeland-security-secretary.html",
+      "image": null
+    },
+    {
+      "title": "Denmark Holds Early Elections Spurred by Trump's Threats to Take Greenland",
       "source": "NPR",
-      "snippet": "An Air Canada regional jet struck a fire truck on the runway after landing at New York's LaGuardia Airport late Sunday night. Two people were killed.",
-      "link": "https://www.npr.org/2026/03/23/g-s1-114773/new-york-laguardia-jet-collides-with-vehicle",
-      "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/2892x1928+0+0/resize/2892x1928!/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F0e%2Fa9%2F270fec1c4158a212fe77b6ffe6d4%2Fap26082243437167.jpg",
-      "publishedAt": "2026-03-23T08:46:31Z"
+      "snippet": "Denmark's prime minister called early parliamentary elections after gaining a popularity boost from standing up to President Trump over his threat to seize Greenland.",
+      "link": "https://www.npr.org/2026/03/24/nx-s1-5757935/denmark-elections-trump-greenland",
+      "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/5712x4284+0+0/resize/5712x4284!/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Fc7%2Fad%2F2c999268476b8d0b5e451064d073%2F5.jpeg"
     },
     {
-      "title": "UN Warns Earth's Climate Being 'Pushed Beyond Its Limits' as El Niño Looms",
-      "source": "BBC News",
-      "snippet": "The Earth's climate is further out of balance than at any time in recorded history, the UN's weather agency says.",
-      "link": "https://www.bbc.com/news/articles/c203rdxkezwo",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/2258/live/cfe36f80-2689-11f1-934f-036468834728.png",
-      "publishedAt": "2026-03-23T04:06:22Z"
-    },
-    {
-      "title": "ICE to Help TSA at Airports Amid Partial Shutdown, Trump's Border Czar Says",
-      "source": "New York Times",
-      "snippet": "Tom Homan cast the operation largely as one to help ease long security lines. The Homeland Security Department said 14 airports across the country would be involved.",
-      "link": "https://www.nytimes.com/2026/03/22/us/politics/ice-airports-homan-trump.html",
-      "image": "https://static01.nyt.com/images/2026/03/22/multimedia/22dc-homan-airports1-kvpl/22dc-homan-airports1-kvpl-mediumSquareAt3X.jpg",
-      "publishedAt": "2026-03-23T03:12:29Z"
-    },
-    {
-      "title": "Doubts from Key Republicans on Surgeon General Test MAHA's Political Power",
-      "source": "Washington Post",
-      "snippet": "Casey Means faces pushback from some Republicans over her refusal to forcefully recommend vaccines.",
-      "link": "https://www.washingtonpost.com/health/2026/03/23/casey-means-surgeon-general-nomination-stalled-maha/",
-      "image": null,
-      "publishedAt": "2026-03-23T10:00:00Z"
-    },
-    {
-      "title": "Worried About a Shaky Stock Market? This Is What Financial Advisers Suggest",
+      "title": "Airstrikes May Have Destroyed Iran's Last F-14s, Ending a Long, Strange Saga",
       "source": "NPR",
-      "snippet": "Their answer depends on how soon you need to tap into your funds — and it might simply be \"do nothing.\"",
-      "link": "https://www.npr.org/2026/03/23/nx-s1-5742568/iran-war-investments-retirement-529-stock-market",
-      "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/6000x4000+0+0/resize/6000x4000!/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Fb5%2F02%2F6af1dfd540e785967a2d92bf3f70%2Fgettyimages-2264634610.jpg",
-      "publishedAt": "2026-03-23T09:00:00Z"
+      "snippet": "The F-14 was made famous in Top Gun. The U.S. sold the planes to Iran in the 1970s, only for the two countries to become enemies. Iran kept its F-14s flying for decades in the face of U.S. sanctions.",
+      "link": "https://www.npr.org/2026/03/24/nx-s1-5752380/f14-tomcats-iran-us-israel-airstrikes-top-gun",
+      "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/3000x1883+0+0/resize/3000x1883!/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F11%2Fb5%2F198d97464092b9fd07a82d848eef%2Fgettyimages-71535520.jpg"
     },
     {
-      "title": "British Couple in Iran Prison Say Situation Is 'Life-Threatening'",
+      "title": "All New Homes to Have Heat Pumps and Solar Panels",
       "source": "BBC News",
-      "snippet": "Craig and Lindsay Foreman are being held in Tehran's Evin prison amid ongoing attacks on Iran.",
-      "link": "https://www.bbc.com/news/articles/cew72ll8245o",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9734/live/1aaaa930-262a-11f1-aad6-2d605a562384.jpg",
-      "publishedAt": "2026-03-23T06:11:00Z"
+      "snippet": "Solar panels that can be plugged in at home could be available to buy in supermarkets in the coming months.",
+      "link": "https://www.bbc.com/news/articles/czjw7klkjm2o",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e71f/live/c6516ea0-26ce-11f1-81a2-116adc639d06.jpg"
+    },
+    {
+      "title": "ICE Deployments Created Chaos for Cities and Cost Them Millions, NPR Analysis Finds",
+      "source": "NPR",
+      "snippet": "Local leaders report already-strapped police departments racked up overtime bills in the millions while others report a multi-million dollar hit to business during the worst ICE surges.",
+      "link": "https://www.npr.org/2026/03/24/nx-s1-5739701/ice-surge-trump-finance-cost-cities",
+      "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/3200x1800+0+0/resize/3200x1800!/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F94%2Fed%2F6e9f53ba46c5aa408fa84786f5d6%2Fpoliceice.jpg"
     }
   ]
 }
