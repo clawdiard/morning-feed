@@ -1,86 +1,76 @@
 {
-  "date": "2026-03-25",
-  "generatedAt": "2026-03-25T10:00:00Z",
+  "date": "2026-03-26",
+  "generatedAt": "2026-03-26T10:00:00Z",
   "articles": [
     {
-      "rank": 1,
-      "title": "U.S. Said to Have Sent Iran a 15-Point Plan to End the Middle East War",
-      "source": "New York Times",
-      "snippet": "The 15-point plan was delivered via Pakistan, whose army chief has emerged as the key interlocutor between the United States and Iran, officials say.",
-      "link": "https://www.nytimes.com/2026/03/24/world/middleeast/us-iran-peace-plan.html",
-      "image": "https://static01.nyt.com/images/2026/03/24/multimedia/24int-mideast-iran-plan-2-ltkm/24int-mideast-iran-plan-2-ltkm-mediumSquareAt3X.jpg"
-    },
-    {
-      "rank": 2,
-      "title": "U.S. Drafts Plan to End War With Iran as 2,000 Paratroopers Ordered to Deploy",
+      "title": "Israel and Iran ramp up attacks as Trump insists Tehran wants a deal",
       "source": "NPR",
-      "snippet": "Nearly a month into the war with Iran, the Trump administration is keeping its options open: it has drafted a 15-point plan to end the war and is ordering thousands of paratroopers to deploy in the Middle East.",
-      "link": "https://www.npr.org/2026/03/25/nx-s1-5760675/iran-war-military-deployment",
-      "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/1024x683+0+0/resize/1024x683!/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F1e%2F05%2F54d603ff48199947f657a9412403%2Fgettyimages-2267729931.jpg"
+      "snippet": "The war in the Middle East ramped up on Thursday as Israel launched a wave of strikes targeting Iranian infrastructure, and Iran fired rounds of missiles at central Israel.",
+      "link": "https://www.npr.org/2026/03/26/nx-s1-5761882/iran-war-peace-conditions",
+      "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/1024x683+0+0/resize/1024x683!/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Fbc%2Fe2%2F0159736a4826a943c0340a916389%2Fgettyimages-2267772275.jpg"
     },
     {
-      "rank": 3,
-      "title": "Iran Says 'Non-Hostile' Ships Can Sail Through the Strait of Hormuz",
-      "source": "New York Times",
-      "snippet": "Ships with no ties to Israel or the United States would be allowed to pass, the government said, but it was unclear if any vessels would try.",
-      "link": "https://www.nytimes.com/2026/03/24/world/middleeast/iran-strait-of-hormuz-ships.html",
-      "image": "https://static01.nyt.com/images/2026/03/24/multimedia/24israel-iran-shipping1-thjk/24israel-iran-shipping1-thjk-mediumSquareAt3X.jpg"
+      "title": "'The era of impunity is over': What next for big tech after landmark social media verdict?",
+      "source": "BBC News",
+      "snippet": "The ruling could be the beginning of the end of social media as we know it, writes the BBC Technology Editor Zoe Kleinman.",
+      "link": "https://www.bbc.com/news/articles/c87wd0d84jqo",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/57c0/live/feb5be00-28f8-11f1-a95f-75471ca6e71e.jpg"
     },
     {
-      "rank": 4,
-      "title": "Audio From Cockpit Recorder Reveals Error Before Deadly LaGuardia Crash",
-      "source": "Washington Post",
-      "snippet": "LaGuardia's air traffic control tower failed to recognize it had granted permission for a plane and an emergency vehicle to use the same runway, officials said.",
-      "link": "https://www.washingtonpost.com/nation/2026/03/24/laguardia-cockpit-recording/",
+      "title": "Trump's Threats to Europe Put Its Leaders in a Double Bind Over Iran",
+      "source": "The New York Times",
+      "snippet": "European politicians risk angering their voters if they join America's war. Yet they could also face domestic upheaval if they take no action to reopen shipping routes that Iran has blocked and ease an energy crisis.",
+      "link": "https://www.nytimes.com/2026/03/26/world/europe/iran-trump-hormuz-europe-dilemma.html",
+      "image": "https://static01.nyt.com/images/2026/03/25/multimedia/25int-europe-iran-01-cbgf/25int-europe-iran-01-cbgf-mediumSquareAt3X.jpg"
+    },
+    {
+      "title": "Some Judges See Risks in Fiery Opinions Warning of Threats to Democracy",
+      "source": "The New York Times",
+      "snippet": "Federal judges are weighing strategies for how to respond to the high stakes, anonymous threats and politicized atmosphere of the Trump era.",
+      "link": "https://www.nytimes.com/2026/03/26/us/some-judges-see-risks-in-fiery-opinions-warning-of-threats-to-democracy.html",
+      "image": "https://static01.nyt.com/images/2026/03/25/multimedia/25DC-JUDGERHETORIC-vmfk/25DC-JUDGERHETORIC-vmfk-mediumSquareAt3X.jpg"
+    },
+    {
+      "title": "British forces will be able to board Russian shadow fleet ships in UK waters",
+      "source": "BBC News",
+      "snippet": "The move will \"starve Putin's war machine\", Starmer says as he arrives in Finland for a military summit.",
+      "link": "https://www.bbc.com/news/articles/cvg0n9z3jlvo",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0269/live/c6bee1a0-28eb-11f1-a79a-77e93010d956.jpg"
+    },
+    {
+      "title": "War with Iran disrupts fertilizer exports as U.S. farmers prepare for planting season",
+      "source": "NPR",
+      "snippet": "Gulf states are major fertilizer producers, and the war with Iran has triggered a 25% price hike just as struggling U.S. farmers are planting corn.",
+      "link": "https://www.npr.org/2026/03/26/g-s1-115240/iran-war-strait-hormuz-fertilizer-exports-farmers-planting-season",
       "image": null
     },
     {
-      "rank": 5,
-      "title": "Trump Says Iran Gave the US a 'Very Big Present' but Gives No Detail",
-      "source": "BBC News",
-      "snippet": "Donald Trump gave the update on Tuesday as the US-Israeli war with Iran entered its fourth week.",
-      "link": "https://www.bbc.com/news/videos/cm29l8y8n44o",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7edf/live/ef5a54f0-282d-11f1-b289-fd2d6419405a.jpg"
+      "title": "After a decade as a Yale hospital janitor, she is now a doctor there",
+      "source": "The Washington Post",
+      "snippet": "\"I still can't believe it,\" said Shay Taylor-Allen, who landed a residency at Yale New Haven Hospital, where she was born and spent most of her adult life on the cleaning staff.",
+      "link": "https://www.washingtonpost.com/lifestyle/2026/03/26/janitor-yale-medical-school-doctor/",
+      "image": null
     },
     {
-      "rank": 6,
-      "title": "Democrat Emily Gregory Wins Florida Special Election in Mar-a-Lago's District",
-      "source": "New York Times",
-      "snippet": "Emily Gregory's victory in Palm Beach brought the Democratic surge to President Trump's backyard, while a union leader leads in a race for a state senate seat vacated by Florida's lieutenant governor.",
-      "link": "https://www.nytimes.com/2026/03/24/us/politics/florida-special-election-emily-gregory.html",
-      "image": "https://static01.nyt.com/images/2026/03/24/multimedia/24nat-florida-special-1-pkwz/24nat-florida-special-1-pkwz-mediumSquareAt3X.jpg"
-    },
-    {
-      "rank": 7,
-      "title": "OpenAI Pulls the Plug on Sora, the Viral AI Video App That Sparked Deepfake Concerns",
+      "title": "It's Equal Pay Day. Women have lost ground for the second year in a row",
       "source": "NPR",
-      "snippet": "OpenAI said Tuesday that it was \"saying goodbye to the Sora app\" and that it would share more soon about how to preserve what users already created on the app.",
-      "link": "https://www.npr.org/2026/03/25/g-s1-115055/openai-pulls-the-plug-on-sora-the-viral-ai-video-app-that-sparked-deepfake-concerns",
-      "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/5000x3333+0+0/resize/5000x3333!/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F55%2F28%2Fe92163c54d9fb64d5e26d8ae6d68%2Fap26055723640362.jpg"
+      "snippet": "The annual observance marks how far into the new year women must work to make what men earned in the previous year. This year, it's March 26, a day later than it was in 2025.",
+      "link": "https://www.npr.org/2026/03/26/nx-s1-5758090/equal-pay-day-gender-wage-gap",
+      "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/5000x4000+0+0/resize/5000x4000!/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F9a%2F48%2Ff848c9954aa59402c24a7b2c2522%2Fgettyimages-1371442941.jpg"
     },
     {
-      "rank": 8,
-      "title": "Boss of Financial Giant BlackRock Warns of Global Recession if Oil Price Hits $150",
+      "title": "Trump's Iran strategy is to pursue two off-ramps at once",
       "source": "BBC News",
-      "snippet": "Larry Fink says if oil prices stay high for a sustained period it will have \"profound implications\" for the world economy.",
-      "link": "https://www.bbc.com/news/articles/c9wqrdkx8ppo",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/30fd/live/65c23d50-27ad-11f1-a79a-77e93010d956.jpg"
+      "snippet": "The White House insists the president is dictating events, but even some Republicans are frustrated by mixed messaging about his war aims.",
+      "link": "https://www.bbc.com/news/articles/c15d980nyw1o",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/2dcb/live/f0045c10-28e7-11f1-934f-036468834728.jpg"
     },
     {
-      "rank": 9,
-      "title": "Senate Republicans Again Block Bid to Halt Iran War Without Authorization",
-      "source": "New York Times",
-      "snippet": "Senate Democrats failed for the third time to advance a resolution that would force the removal of troops from hostilities in Iran unless Congress approves offensive operations.",
-      "link": "https://www.nytimes.com/2026/03/24/us/politics/senate-iran-war-vote.html",
-      "image": "https://static01.nyt.com/images/2026/03/24/multimedia/24dc-warpowers-pltf/24dc-warpowers-pltf-mediumSquareAt3X.jpg"
-    },
-    {
-      "rank": 10,
-      "title": "Your Data Is Everywhere. The Government Is Buying It Without a Warrant",
+      "title": "A $50 billion fund to help rural hospitals could actually lead to closures and cuts",
       "source": "NPR",
-      "snippet": "Data brokers buy up huge amounts of information from cell phones and browsers to sell for targeted advertising. But the government, including ICE, also buys the data.",
-      "link": "https://www.npr.org/2026/03/25/nx-s1-5752369/ice-surveillance-data-brokers-congress-anthropic",
-      "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/6800x4548+0+0/resize/6800x4548!/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Fc6%2F75%2Fa096e7ae4ce2bc1cc1f90195c1b3%2Fgettyimages-534661090.jpg"
+      "snippet": "States are rolling out plans for their share of a $50 billion fund established by Congress to improve rural health care. In some states, the money may provoke rural hospitals to cut services.",
+      "link": "https://www.npr.org/2026/03/26/nx-s1-5760925/rural-health-transformation-fund-hospitals-montana",
+      "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/4032x3024+0+0/resize/4032x3024!/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Fc3%2Ffe%2F0b795951485a84cd8ec7ee284ea2%2Frht-03.jpg"
     }
   ]
 }
